@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>Poisson Probabilities</title>
+    <style>
+        body {
+            max-width: 440px;
+        }
+
+        #sample {
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            color: blue;
+            padding: 5px 5px;
+        }
+
+        td {
+            border: 1px solid blue;
+            padding: 5px 5px;
+            text-align: center;
+            position: relative;
+        }
+
+        td:hover .tip {
+            visibility: visible;
+        }
+
+        td .tip {
+            visibility: hidden;
+            font-size: small;
+            background-color: blue;
+            color: white;
+            text-align: center;
+            padding: 5px 5px;
+            position: absolute;
+            left: 5px;
+            top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <center>
+        <h2 id=title></h2>
+
+        <table id="tablo"></table>
+    </center>
+
+    <hr />
+    <b>Sample code</b>
+    <pre id=sample></pre>
+    <hr />
+    <script>
+        function makeRows(m, n) {
+            const L = [0.5, 1, 1.5, 2, 2.5, 3];
+            const p = [];
+            for (let λ of L) p.push(Math.exp(-λ).toFixed(4))
+            let row = "<th></th>";
+            for (let j = 0; j <= n; j++)
+                row += "<th>" + "λ=" + L[j] + "</th>";
+            let text = "<tr>" + row + "</tr>";
+            for (x = 0; x <= m; x++) {
+                row = "<th>" + "x=" + x + "</th>";
+                if (x != 0) {
+                    for (let i = 0; i < p.length; i++) {
+                        p[i] = ((p[i] * L[i]) / x).toFixed(4)
+                        row += "<td>" + p[i] + "</td>";
+                    }
+                } else if (x == 0) {
+                    for (let i = 0; i < p.length; i++) {
+                        row += "<td>" + p[i] + "</td>";
+                    }
+                }
+                text += "<tr>" + row + "</tr>";
+            }
+            let t = text.length + " chars";
+            console.log("makeRows: " + m + "x" + n + " " + t);
+            tablo.innerHTML = text;
+            out.innerText = t;
+
+        }
+
+        function tableFromMenu() {
+            let [m, n] = size.value.split("x");
+            makeRows(m, n);
+            rows.value = m;
+            cols.value = n;
+        }
+
+        function tableFromInput() {
+            let m = rows.value;
+            let n = cols.value;
+            makeRows(m, n);
+            size.value = m + "x" + n;
+        }
+        title.innerText = document.title;
+        sample.innerText = makeRows.toString();
+        makeRows(8, 5);
+
+    </script>
+
+</body>
+
+</html>
