@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CW5</title>
+</head>
+
+<body>
+
+    <h2 >Temperature Conversion</h2>
+    Celsius  
+    <input type="number" id="inp_c" value="0" onchange="converter()">
+
+    Fahrenheit
+    <input type="number" id="inp_f">
+    <hr>
+    <br><br>
+    
+    <h2>Make a Map</h2>
+    
+      <img src="https://ademyavuzcelikk.github.io/JavaScriptRepo/CW5/CW5ı.JPG" alt="Örnek Resim"/>
+    
+    
+
+    <script>
+        function converter() {
+            let temp = new Temperature(Number(document.getElementById("inp_c").value));
+            temp = temp.fahrenheit;
+            document.getElementById("inp_f").value = temp;
+        }
+        class Temperature {
+            constructor(celsius = 0) {
+                this.celsius = (celsius);
+            }
+            get fahrenheit() {
+                return (this.celsius * 1.8 + 32).toFixed(2);
+            }
+
+        }
+    </script>
+</body>
+
+</html>
