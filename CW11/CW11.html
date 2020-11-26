@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Asynchronous Programming </title>
+
+  <style> /* CSS comment */
+    body { max-width: 440px; }
+    #url { width: 190px; }
+    span, #url { color: blue; }
+  </style>
+</head>
+
+<body>   <!-- HTML comment: Modify all items marked xxx -->
+
+<h1 id=title title="Modify xxx"></h2>
+<h2>Battery Status</h2>
+<p title="Battery level">
+ <span id=level>??</span>
+</p>
+<p id="ischarging"></p>
+<h2>Online Status</h2>
+<p id="isconnected">
+<h2>Keyboard</h2>
+<p id="keypress">
+ 
+</p>
+
+<hr />
+<b>Sample code</b>
+<pre id=sample>This text is not shown. Why?</pre>
+
+<hr />
+
+<script>
+"use strict";
+// JavaScript comment
+navigator.getBattery().then(function(battery) {
+    let a =document.getElementById("ischarging");
+    if (battery.charging) {
+        a.innerHTML="Battery is charging";
+    } 
+    else {
+        a.innerHTML="Battery is discharging";
+    }
+});
+    function init() {
+    navigator.getBattery().then(b => 
+      level.innerText = 100*b.level+'%'
+    )
+}
+if(navigator.onLine){
+    document.getElementById("isconnected").innerHTML="connected--online";
+}
+else{
+    document.getElementById("connected--online").innerHTML="connected--ofline";
+}
+document.onkeyup = getKey;  
+function getKey(e){
+let keypress=String.fromCharCode(e.keyCode);
+document.getElementById("keypress").innerHTML=keypress;
+}
+
+
+    title.innerText = document.title;
+    sample.innerText = init+"\n"+getKey;
+    init();
+</script>
+
+</body>
+</html>
