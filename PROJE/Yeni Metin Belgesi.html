@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    #buton{
+        border:1px;
+        background-color:orange;
+        width:70px;
+        height:70px;
+        position: relative;
+        border-radius: 50px;
+    }
+     #easy{
+        color: white;
+        background-color:#2ecc71;
+        width: 20;
+        height: 40;
+        border-radius: 10px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-top: 5px solid black;
+        border-left: 5px solid black;
+        transition: all 0.1s;
+    }
+    #easy:hover{
+        background-color: #27ae60
+    }
+    #easy:active{
+        border-left: none;
+        border-top: none;
+    }
+    #medium{
+        color: white;
+        background-color:#2ecc71;
+        border-radius: 10px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-top: 5px solid black;
+        border-left: 5px solid black;
+        transition: all 0.1s;
+    }
+    #medium:hover{
+        background-color: #27ae60
+    }
+    #medium:active{
+        border-left: none;
+        border-top: none;
+    }
+    #hard{
+        color: white;
+        background-color:#2ecc71;
+        width: 20;
+        height: 40;
+        border-radius: 10px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-top: 5px solid black;
+        border-left: 5px solid black;
+        transition: all 0.1s;
+    }
+    #hard:hover{
+        background-color: #27ae60
+    }
+    #hard:active{
+        border-left: none;
+        border-top: none;
+    }
+    div{
+        background: blue;
+    }
+    
+</style>
+</head>
+<body >
+    <h1>BUTON YAKALAMA OYUNU</h1>
+    <p id='tanım'>Zorluk seviyeni seç ve yaramaz butonları yakala</p>
+   <button type="button" id="easy">Easy</button>
+   <button type="button" id="medium">Medium</button>
+   <button type="button" id="hard">Hard</button>
+   <p id="skor"></p>
+    <div style="width: 550px; height: 550px;">
+          <button type="button" id="buton"></button>
+    </div>
+   
+  
+    <script>
+    
+    document.querySelector('#easy').onclick=function(){
+    let buton=document.querySelector('#buton');
+    buton.style.width="70px";
+    buton.style.height="70px";
+    document.getElementById('tanım').innerHTML="Sakin ol champ! Arkandan atlı kovalamıyor...";
+    let counter=0;
+    buton=document.querySelector('#buton');
+    buton.onclick=function(){
+    counter++;
+    let x=parseInt(Math.random()*400);
+    let y=parseInt(Math.random()*400);
+    buton.style.left=x+"px";
+    buton.style.top=y+"px";
+    document.getElementById('skor').innerHTML="SCORE : "+counter;
+    }
+    function motivation() {
+    document.getElementById('tanım').innerHTML="Artık Medium'a geçme vaktin gelmedi mi????";
+    }
+    setTimeout(motivation, 1000);
+    }
+    
+    document.querySelector('#medium').onclick=function(){
+    document.getElementById('tanım').innerHTML="Süren başladı çalıştır parmakları!"
+    let buton=document.querySelector('#buton');
+    buton.style.width="70px";
+    buton.style.height="70px";
+    let counter=0;
+    buton.onclick=function(){
+    counter++;
+    let x=parseInt(Math.random()*400);
+    let y=parseInt(Math.random()*400);
+    buton.style.left=x+"px";
+    buton.style.top=y+"px";
+    document.getElementById('skor').innerHTML="SCORE : "+counter;
+    }
+    function timeFinish() {
+    alert('SÜRENİZ BİTTİ!SCORE: '+counter);
+    alert('TEKRAR OYNAMAK İÇİN BİR ZORLUK SEVİYESİ SEÇİN ');
+    }
+    setTimeout(timeFinish, 6000);
+    }
+    document.querySelector('#hard').onclick=function(){
+    document.getElementById('tanım').innerHTML="Bakalım ne kadar zorlayabiliriz seni"
+    let buton=document.querySelector('#buton');
+    let counter=0;
+    buton.onclick=function(){
+    counter++;
+    let x=parseInt(Math.random()*400);
+    let y=parseInt(Math.random()*400);
+    buton.style.left=x+"px";
+    buton.style.top=y+"px";
+    buton.style.width=this.clientWidth-5+"px";
+    buton.style.height=this.clientHeight-5+"px";
+    document.getElementById('skor').innerHTML="SCORE : "+counter;
+    }
+    function timeFinish() {
+    alert('SÜRENİZ BİTTİ!SCORE: '+counter);
+    alert('TEKRAR OYNAMAK İÇİN BİR ZORLUK SEVİYESİ SEÇİN ');
+    }
+    setTimeout(timeFinish, 6000);
+    }
+    </script>
+</body>
+</html>
