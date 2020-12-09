@@ -2,21 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+      <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="../images/Weather.png">
+    <title>Project:Adem</title>
 <style>
     #buton{
         border:1px;
-        background:orange;
-        box-shadow: 0 0 10px orange,
-                    0 0 60px orange,
-                    0 0 200px yellow,
-                inset 0 0 80px yellow;
-        width:60px;
-        height:60px;
+        background-color:orange;
+        width:70px;
+        height:70px;
         position: relative;
         border-radius: 50px;
     }
-    #easy{
+     #easy{
         color: white;
         background-color:#2ecc71;
         width: 20;
@@ -71,67 +69,37 @@
         border-left: none;
         border-top: none;
     }
-    #reflex{
-        color: white;
-        background-color:#2ecc71;
-        width: 20;
-        height: 40;
-        border-radius: 10px;
-        letter-spacing: 2px;
-        font-weight: bold;
-        border-top: 5px solid black;
-        border-left: 5px solid black;
-        transition: all 0.1s;
-    }
-    #reflex:hover{
-        background-color: #27ae60
-    }
-    #reflex:active{
-        border-left: none;
-        border-top: none;
-    }
     div{
-        background-image: url(https://ademyavuzcelikk.github.io/JavaScriptRepo/asasd_400x400.jpg)
-    }
-    #skor{
-        background:white;
-        width: 100px;
-        height: 50px;
-        border-radius: 10px;
-        position: relative;
-        top: 200px;
-        left: 10px;
-        pointer-events: none
-        
+        background: blue;
     }
     
 </style>
 </head>
 <body >
-            <h1>BUTON YAKALAMA OYUNU</h1>
-   <button style="font-family: cursive" type="button" id="easy">EASY</button>
-   <button style="font-family: cursive" type="button" id="medium">MEDİUM</button>
-   <button style="font-family: cursive" type="button" id="hard">HARD</button>
-   <button style="font-family: cursive" type="button" id="reflex">REFLEX</button>
-            <p id='tanım'>Zorluk seviyeni seç ve yaramaz butonları yakala</p>
-    <div style="width: 400px; height: 400px;">
-
+    <h1>BUTON YAKALAMA OYUNU</h1>
+    <p id='tanım'>Zorluk seviyeni seç ve yaramaz butonları yakala</p>
+   <button type="button" id="easy">Easy</button>
+   <button type="button" id="medium">Medium</button>
+   <button type="button" id="hard">Hard</button>
+   <p id="skor"></p>
+    <div style="width: 550px; height: 550px;">
           <button type="button" id="buton"></button>
-          <p id="skor"></p>
-          
     </div>
+   
+  
     <script>
+    
     document.querySelector('#easy').onclick=function(){
     let buton=document.querySelector('#buton');
-    buton.style.width="60px";
-    buton.style.height="60px";
+    buton.style.width="70px";
+    buton.style.height="70px";
     document.getElementById('tanım').innerHTML="Sakin ol champ! Arkandan atlı kovalamıyor...";
     let counter=0;
     buton=document.querySelector('#buton');
     buton.onclick=function(){
     counter++;
-    let x=parseInt(Math.random()*300);
-    let y=parseInt(Math.random()*300);
+    let x=parseInt(Math.random()*400);
+    let y=parseInt(Math.random()*400);
     buton.style.left=x+"px";
     buton.style.top=y+"px";
     document.getElementById('skor').innerHTML="SCORE : "+counter;
@@ -139,18 +107,19 @@
     function motivation() {
     document.getElementById('tanım').innerHTML="Artık Medium'a geçme vaktin gelmedi mi????";
     }
-    setTimeout(motivation, 3000);
+    setTimeout(motivation, 1000);
     }
+    
     document.querySelector('#medium').onclick=function(){
     document.getElementById('tanım').innerHTML="Süren başladı çalıştır parmakları!"
     let buton=document.querySelector('#buton');
-    buton.style.width="60px";
-    buton.style.height="60px";
+    buton.style.width="70px";
+    buton.style.height="70px";
     let counter=0;
     buton.onclick=function(){
     counter++;
-    let x=parseInt(Math.random()*300);
-    let y=parseInt(Math.random()*300);
+    let x=parseInt(Math.random()*400);
+    let y=parseInt(Math.random()*400);
     buton.style.left=x+"px";
     buton.style.top=y+"px";
     document.getElementById('skor').innerHTML="SCORE : "+counter;
@@ -164,13 +133,11 @@
     document.querySelector('#hard').onclick=function(){
     document.getElementById('tanım').innerHTML="Bakalım ne kadar zorlayabiliriz seni"
     let buton=document.querySelector('#buton');
-    buton.style.width="60px";
-    buton.style.height="60px";
     let counter=0;
     buton.onclick=function(){
     counter++;
-    let x=parseInt(Math.random()*300);
-    let y=parseInt(Math.random()*300);
+    let x=parseInt(Math.random()*400);
+    let y=parseInt(Math.random()*400);
     buton.style.left=x+"px";
     buton.style.top=y+"px";
     buton.style.width=this.clientWidth-5+"px";
@@ -178,41 +145,11 @@
     document.getElementById('skor').innerHTML="SCORE : "+counter;
     }
     function timeFinish() {
-        
     alert('SÜRENİZ BİTTİ!SCORE: '+counter);
     alert('TEKRAR OYNAMAK İÇİN BİR ZORLUK SEVİYESİ SEÇİN ');
     }
     setTimeout(timeFinish, 6000);
     }
-    document.querySelector('#reflex').onclick=function(){
-    let buton=document.querySelector('#buton');
-    document.getElementById('tanım').innerHTML="Reflex Test";
-    buton.style.width="60px";
-    buton.style.height="60px";
-    buton.style.top="160px";
-    buton.style.left="160px";
-    buton.style.visibility="hidden";
-    let time=parseInt(Math.random()*6000);
-    console.log(time);
-    setTimeout(reflex, time);
-    function reflex() {
-    let buton=document.querySelector('#buton');
-    buton.style.visibility="visible";
-    var start = new Date();
-    buton.onclick=function(){
-    buton.style.visibility="hidden";
-    var finish = new Date();
-    console.log(finish-start);
-    document.querySelector('#skor').innerHTML=(finish-start).toString()+"ms";
-    let time=parseInt(Math.random()*6000);
-    setTimeout(reflex, time);
-    }    
-    }
-    }
-    
-
-    
-    
     </script>
 </body>
 </html>
