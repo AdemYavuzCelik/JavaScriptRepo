@@ -5,7 +5,7 @@
   "background_color": "blue",
   "icons": [
     {
-      "src": "JSResim.png",
+      "src": "images/PP.png",
       "sizes": "192x192",
       "type": "image/png"
     }
