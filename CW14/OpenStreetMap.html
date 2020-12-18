@@ -67,15 +67,9 @@
   <b>Sun</b>
   <pre id=gunes>sunrise</pre>
 </div>
-[X,Y] : <input type=text onchange="askWeather();init();" id=xy value=25.34,31.66>
+[X,Y] : <input type=text onchange="askWeather()" id=xy value=40.96,29.07>
 <div id="map"></div>
 <hr />
-<div>
-<p id=err>You need an API key for openweathermap.org 
-  <a href="https://openweathermap.org/appid" 
-   target="NewTab">here</a> 
-</p>
-</div>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
@@ -91,6 +85,11 @@ function init() {
     MAP.on('click', e => console.log(e.latlng))
 }
     init();
+function clickWeather(){
+    MAP.on('click', e => {document.getElementById('xy').value = e.latlng['lat'].toFixed(2)+ "," + e.latlng['lng'].toFixed(2); askWeather((String(e.latlng['lat']+"," + e.latlng['lng'])))});
+
+}
+  clickWeather();
 var hm;
 function twoDigits(t) {
     if (t>9) return ""+t;
@@ -142,6 +141,7 @@ function askWeather() {
     let xy = document.getElementById("xy").value.split(",");
     lat=xy[0];
     lon=xy[1];
+    MAP.setView([lat, lon], 10);
     console.log(lat, lon); 
     const url = "https://api.openweathermap.org/data/2.5/weather?"
     let u = url+"lat="+lat+"&lon="+lon+"&APPID="+accessKey;
@@ -214,7 +214,7 @@ function getAPIkey() {
     }
 }
 
-    err.style.display = "none";
+    
     window.onfocus = setHourMin;
     setHourMin(); count(); 
     getAPIkey(); showIcon('01n');
