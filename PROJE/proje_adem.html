@@ -2,127 +2,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width">
-    <link rel="icon" href="../images/Weather.png">
-    <title>Project:Adem</title>
+    <title>Document</title>
 <style>
     #buton{
-        border:1px;
-        background-color:orange;
-        width:70px;
-        height:70px;
+        background:blue;
+        width:60px;
+        height:60px;
+        position: absolute;
         border-radius: 50px;
-        position:relative;
     }
-     #easy{
-        color: white;
-        background-color:#2ecc71;
+    #easy{        
+        background-color:red;
         width: 20;
         height: 40;
         border-radius: 10px;
         letter-spacing: 2px;
+        color: white;
+        font-family: cursive;
         font-weight: bold;
-        border-top: 5px solid black;
-        border-left: 5px solid black;
-        transition: all 0.1s;
     }
     #easy:hover{
-        background-color: #27ae60
-    }
-    #easy:active{
-        border-left: none;
-        border-top: none;
+        background-color: darkred;
     }
     #medium{
-        color: white;
-        background-color:#2ecc71;
+        background-color:red;
         border-radius: 10px;
         letter-spacing: 2px;
+        color: white;
+        font-family: cursive;
         font-weight: bold;
-        border-top: 5px solid black;
-        border-left: 5px solid black;
-        transition: all 0.1s;
     }
     #medium:hover{
-        background-color: #27ae60
-    }
-    #medium:active{
-        border-left: none;
-        border-top: none;
+        background-color: darkred;
     }
     #hard{
-        color: white;
-        background-color:#2ecc71;
+        background-color:red;
         width: 20;
         height: 40;
         border-radius: 10px;
         letter-spacing: 2px;
+        color: white;
+        font-family: cursive;
         font-weight: bold;
+    }
+     #hard:hover{
+        background-color: darkred;
+    }
+    #div{
+        background-color: black;
+        width: 400px;
+        height: 400px;
+    }
+    #skor{
+        color: white;
+        font-family: cursive;
+        font-weight: bold;
+        background: red;
+        width: 100px;
+        height: 25px;
+        border-radius: 10px;
+        letter-spacing: 2px;
+        position: absolute;
         border-top: 5px solid black;
         border-left: 5px solid black;
-        transition: all 0.1s;
+        top: 55px;
+        left: 130px;
+        pointer-events: none
+        
     }
-    #hard:hover{
-        background-color: #27ae60
+    #tanım{
+       color:white ;
+       font-family: cursive;
     }
-    #hard:active{
-        border-left: none;
-        border-top: none;
+    #head{
+        color:white ;
+       font-family: cursive;
     }
-    div{
-        background: blue;
-    }
-    
 </style>
 </head>
 <body >
-    <div width="100%" height="100%">
-        <h1>BUTON YAKALAMA OYUNU</h1>
-    <p id='tanım'>Zorluk seviyeni seç ve yaramaz butonları yakala</p>
-   <button type="button" id="easy">Easy</button>
-   <button type="button" id="medium">Medium</button>
-   <button type="button" id="hard">Hard</button>
-   <p id="skor"></p>
-          <button type="button" id="buton"></button>
+
+    <div id="div">
+           <h1 id="head">BUTON YAKALAMA OYUNU</h1>
+           <button type="button" id="easy">EASY</button>
+           <button type="button" id="medium">MEDİUM</button>
+           <button type="button" id="hard">HARD</button>
+           <button type="button" id="buton"></button>
+           <p id='tanım' >Zorluk seviyeni seç ve güneşi yakala</p>
+           <p id="skor">SCORE 0</p>  
     </div>
-   
-  
     <script>
-    
     document.querySelector('#easy').onclick=function(){
     let buton=document.querySelector('#buton');
-    buton.style.width="70px";
-    buton.style.height="70px";
+    buton.style.width="60px";
+    buton.style.height="60px";
     document.getElementById('tanım').innerHTML="Sakin ol champ! Arkandan atlı kovalamıyor...";
     let counter=0;
     buton=document.querySelector('#buton');
     buton.onclick=function(){
     counter++;
-    let x=parseInt(Math.random()*200);
-    let y=parseInt(Math.random()*200);
+    let x=(Math.random() * 330)+15;
+    let y=(Math.random() * 330)+25;
     buton.style.left=x+"px";
     buton.style.top=y+"px";
-    document.getElementById('skor').innerHTML="SCORE : "+counter;
+    document.getElementById('skor').innerHTML="   SCORE  "+counter;
     }
     function motivation() {
     document.getElementById('tanım').innerHTML="Artık Medium'a geçme vaktin gelmedi mi????";
     }
-    setTimeout(motivation, 1000);
+    setTimeout(motivation, 3000);
     }
-    
     document.querySelector('#medium').onclick=function(){
     document.getElementById('tanım').innerHTML="Süren başladı çalıştır parmakları!"
     let buton=document.querySelector('#buton');
-    buton.style.width="70px";
-    buton.style.height="70px";
+    buton.style.width="60px";
+    buton.style.height="60px";
     let counter=0;
     buton.onclick=function(){
     counter++;
-    let x=parseInt(Math.random()*400);
-    let y=parseInt(Math.random()*400);
+    let x=(Math.random() * 330)+15;
+    let y=(Math.random() * 330)+25;
     buton.style.left=x+"px";
     buton.style.top=y+"px";
-    document.getElementById('skor').innerHTML="SCORE : "+counter;
+    document.getElementById('skor').innerHTML="   SCORE  "+counter;
     }
     function timeFinish() {
     alert('SÜRENİZ BİTTİ!SCORE: '+counter);
@@ -130,26 +132,7 @@
     }
     setTimeout(timeFinish, 6000);
     }
-    document.querySelector('#hard').onclick=function(){
-    document.getElementById('tanım').innerHTML="Bakalım ne kadar zorlayabiliriz seni"
-    let buton=document.querySelector('#buton');
-    let counter=0;
-    buton.onclick=function(){
-    counter++;
-    let x=parseInt(Math.random()*400);
-    let y=parseInt(Math.random()*400);
-    buton.style.left=x+"px";
-    buton.style.top=y+"px";
-    buton.style.width=this.clientWidth-5+"px";
-    buton.style.height=this.clientHeight-5+"px";
-    document.getElementById('skor').innerHTML="SCORE : "+counter;
-    }
-    function timeFinish() {
-    alert('SÜRENİZ BİTTİ!SCORE: '+counter);
-    alert('TEKRAR OYNAMAK İÇİN BİR ZORLUK SEVİYESİ SEÇİN ');
-    }
-    setTimeout(timeFinish, 6000);
-    }
+
     </script>
 </body>
 </html>
