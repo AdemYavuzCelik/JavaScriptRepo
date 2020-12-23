@@ -1,6 +1,6 @@
 {
   "name": "Advanced Programming Techniques",
-  "start_url": "PWA.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "blue",
   "icons": [
