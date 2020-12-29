@@ -2,113 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Project:Adem</title>
+    <link rel="icon" href="https://media.discordapp.net/attachments/765484446681923584/792155779699834930/sun.png">
+     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 <style>
-    #buton{
-        background:blue;
-        width:60px;
-        height:60px;
-        position: absolute;
-        border-radius: 50px;
-    }
-    #easy{        
-        background-color:red;
-        width: 20;
-        height: 40;
-        border-radius: 10px;
-        letter-spacing: 2px;
-        color: white;
+    #baslik{
         font-family: cursive;
-        font-weight: bold;
-    }
-    #easy:hover{
-        background-color: darkred;
-    }
-    #medium{
-        background-color:red;
-        border-radius: 10px;
-        letter-spacing: 2px;
         color: white;
+        user-select: none;
+        text-align: center;
+    }
+    #buton{                        
+        border:1px;            
+        background:orange;   
+        box-shadow: 0 0 10px orange,  
+                    0 0 60px orange,
+                    0 0 200px yellow,
+                inset 0 0 80px yellow;
+        width:60px;           
+        height:60px;            
+        position: absolute;    
+        border-radius: 50px;    
+    }
+    .seviye{
+        color: white;  
+        background-color:#2ecc71; 
         font-family: cursive;
-        font-weight: bold;
-    }
-    #medium:hover{
-        background-color: darkred;
-    }
-    #hard{
-        background-color:red;
-        width: 20;
-        height: 40;
-        border-radius: 10px;
-        letter-spacing: 2px;
-        color: white;
-        font-family: cursive;
-        font-weight: bold;
-    }
-     #hard:hover{
-        background-color: darkred;
-    }
-    #div{
-        background-color: black;
-        width: 400px;
-        height: 400px;
-    }
-    #skor{
-        color: white;
-        font-family: cursive;
-        font-weight: bold;
-        background: red;
-        width: 100px;
-        height: 25px;
-        border-radius: 10px;
-        letter-spacing: 2px;
-        position: absolute;
+        border-radius: 10px; 
+        letter-spacing: 2px; 
+        font-weight: bold;   
         border-top: 5px solid black;
         border-left: 5px solid black;
-        top: 55px;
-        left: 130px;
-        pointer-events: none
+        transition: all 0.1s; 
+    }
+    
+    .seviye:hover{                    
+        background-color: #27ae60  
+    }
+    .seviye:active{ 
+        border-left: none;  
+        border-top: none;  
+    }
+    
+    div{   
+        background-image: url(https://media.discordapp.net/attachments/765484446681923584/792150836159316009/proje.jpg?width=421&height=676)
+       
+    }
+    #skor{ 
+        background:white;
+        width: 100px;    
+        height: 50px;    
+        border-radius: 10px;
+        position: absolute;
+        top: 650px;         
+        left: 10px;       
+        user-select: none; 
+        
         
     }
-    #tanım{
-       color:white ;
-       font-family: cursive;
+    #tanım{       
+    color:white ;
+    font-family: cursive;
+    font-size: 20px;
+    user-select: none; 
     }
-    #head{
-        color:white ;
-       font-family: cursive;
-    }
+    
 </style>
 </head>
 <body >
 
-    <div id="div">
-           <h1 id="head">BUTON YAKALAMA OYUNU</h1>
-           <button type="button" id="easy">EASY</button>
-           <button type="button" id="medium">MEDİUM</button>
-           <button type="button" id="hard">HARD</button>
-           <button type="button" id="buton"></button>
-           <p id='tanım' >Zorluk seviyeni seç ve güneşi yakala</p>
-           <p id="skor">SCORE 0</p>  
+    <div style="width: 400px; height: 749px;">  
+           <h1 id="baslik">BUTON YAKALAMA OYUNU</h1>       
+           <button class="seviye" type="button" id="easy">EASY</button>   
+           <button class="seviye" type="button" id="medium">MEDİUM</button>
+           <button class="seviye" type="button" id="hard">HARD</button>
+           <button class="seviye" type="button" id="reflex">REFLEX</button>
+            <p id='tanım'>Zorluk seviyeni seç ve güneşi yakala</p>
+            <button type="button" id="buton"></button>
+            <p  id="skor"></p>
+          
     </div>
     <script>
-    document.querySelector('#easy').onclick=function(){
-    let buton=document.querySelector('#buton');
+    document.querySelector('#easy').onclick=function(){ 
+    let buton=document.querySelector('#buton');        
     buton.style.width="60px";
     buton.style.height="60px";
     document.getElementById('tanım').innerHTML="Sakin ol champ! Arkandan atlı kovalamıyor...";
     let counter=0;
-    buton=document.querySelector('#buton');
-    buton.onclick=function(){
-    counter++;
+    buton.onclick=function(){ 
+    counter++; 
     let x=(Math.random() * 330)+15;
-    let y=(Math.random() * 330)+25;
-    buton.style.left=x+"px";
+    let y=(Math.random() * 679)+25;
+    buton.style.left=x+"px";    
     buton.style.top=y+"px";
-    document.getElementById('skor').innerHTML="   SCORE  "+counter;
+    document.getElementById('skor').innerHTML="SCORE : "+counter; 
     }
-    function motivation() {
-    document.getElementById('tanım').innerHTML="Artık Medium'a geçme vaktin gelmedi mi????";
+    function motivation() { 
+    document.getElementById('tanım').innerHTML="Artık Medium'a geçme vaktin gelmedi mi???";
     }
     setTimeout(motivation, 3000);
     }
@@ -117,22 +107,68 @@
     let buton=document.querySelector('#buton');
     buton.style.width="60px";
     buton.style.height="60px";
+    let counter=0;         
+    buton.onclick=function(){
+    counter++;
+    let x=(Math.random() * 330)+15;
+    let y=(Math.random() * 679)+25;
+    buton.style.left=x+"px";
+    buton.style.top=y+"px";
+    document.getElementById('skor').innerHTML="SCORE : "+counter;
+    }                         
+    function timeFinish() {     
+    alert('SÜRENİZ BİTTİ!SCORE: '+counter);
+    alert('TEKRAR OYNAMAK İÇİN BİR ZORLUK SEVİYESİ SEÇİN ');
+    }
+    setTimeout(timeFinish, 6000); 
+    }
+    document.querySelector('#hard').onclick=function(){
+    document.getElementById('tanım').innerHTML="Bakalım ne kadar zorlayabiliriz seni"
+    let buton=document.querySelector('#buton');
+    buton.style.width="60px";
+    buton.style.height="60px";
     let counter=0;
     buton.onclick=function(){
     counter++;
     let x=(Math.random() * 330)+15;
-    let y=(Math.random() * 330)+25;
+    let y=(Math.random() * 679)+25;
     buton.style.left=x+"px";
     buton.style.top=y+"px";
-    document.getElementById('skor').innerHTML="   SCORE  "+counter;
+    buton.style.width=this.clientWidth-5+"px";
+    buton.style.height=this.clientHeight-5+"px";
+    document.getElementById('skor').innerHTML="SCORE : "+counter;
     }
     function timeFinish() {
+        
     alert('SÜRENİZ BİTTİ!SCORE: '+counter);
     alert('TEKRAR OYNAMAK İÇİN BİR ZORLUK SEVİYESİ SEÇİN ');
     }
     setTimeout(timeFinish, 6000);
     }
-
+    document.querySelector('#reflex').onclick=function(){
+    let buton=document.querySelector('#buton');
+    document.getElementById('tanım').innerHTML="Reflex Test";
+    buton.style.width="60px";  
+    buton.style.height="60px";  
+    buton.style.top="340px";
+    buton.style.left="170px";
+    buton.style.visibility="hidden"; 
+    let time=(Math.random() * 1000); 
+    setTimeout(reflex, time);
+    function reflex() {
+    let buton=document.querySelector('#buton'); 
+    buton.style.visibility="visible";  
+    var start = new Date();
+    buton.onclick=function(){ 
+    buton.style.visibility="hidden";
+    var finish = new Date(); 
+    console.log(finish-start);
+    document.querySelector('#skor').innerHTML=(finish-start).toString()+"ms";
+    let time=(Math.random() * 6000); 
+    setTimeout(reflex, time);  
+    }    
+    }
+    }  
     </script>
 </body>
 </html>
