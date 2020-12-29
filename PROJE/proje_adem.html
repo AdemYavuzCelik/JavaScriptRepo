@@ -6,11 +6,30 @@
     <link rel="icon" href="https://media.discordapp.net/attachments/765484446681923584/792155779699834930/sun.png">
      <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 <style>
+    body {
+  margin: 0;
+  padding: 0;
+}
+    body {
+  height: 100vh;
+  width: 100vw;
+}
+    * {
+  box-sizing: border-box;
+}
+    div {
+  height: 100%;
+  width: 100%;
+         background-image: url(https://media.discordapp.net/attachments/765484446681923584/792150836159316009/proje.jpg?width=421&height=676);
+    padding: 10px;
+  font-size: 20px;
+}
     #baslik{
         font-family: cursive;
         color: white;
         user-select: none;
         text-align: center;
+    
     }
     #buton{                        
         border:1px;            
@@ -44,18 +63,12 @@
         border-top: none;  
     }
     
-    div{   
-        background-image: url(https://media.discordapp.net/attachments/765484446681923584/792150836159316009/proje.jpg?width=421&height=676)
-       
-    }
+
     #skor{ 
         background:white;
         width: 100px;    
         height: 50px;    
-        border-radius: 10px;
-        position: absolute;
-        top: 650px;         
-        left: 10px;       
+        border-radius: 10px;    
         user-select: none; 
         
         
@@ -71,7 +84,7 @@
 </head>
 <body >
 
-    <div style="width: 400px; height: 749px;">  
+    <div id="div" >  
            <h1 id="baslik">BUTON YAKALAMA OYUNU</h1>       
            <button class="seviye" type="button" id="easy">EASY</button>   
            <button class="seviye" type="button" id="medium">MEDİUM</button>
@@ -83,6 +96,9 @@
           
     </div>
     <script>
+var divv = document.querySelector('div');
+var en = divv.offsetWidth;
+var boy = divv.offsetHeight;
     document.querySelector('#easy').onclick=function(){ 
     let buton=document.querySelector('#buton');        
     buton.style.width="60px";
@@ -91,9 +107,14 @@
     let counter=0;
     buton.onclick=function(){ 
     counter++; 
-    let x=(Math.random() * 330)+15;
-    let y=(Math.random() * 679)+25;
-    buton.style.left=x+"px";    
+    let x=Math.floor(Math.random() * en);
+    let y=Math.floor(Math.random() * boy);
+    if(x>en-60){
+        x=en-60;
+    }if(y>boy-60){
+        y=boy-60;
+    }
+    buton.style.left=x+"px";   
     buton.style.top=y+"px";
     document.getElementById('skor').innerHTML="SCORE : "+counter; 
     }
@@ -110,9 +131,14 @@
     let counter=0;         
     buton.onclick=function(){
     counter++;
-    let x=(Math.random() * 330)+15;
-    let y=(Math.random() * 679)+25;
-    buton.style.left=x+"px";
+    let x=Math.floor(Math.random() * en);
+    let y=Math.floor(Math.random() * boy);
+    if(x>en-60){
+        x=en-60;
+    }if(y>boy-60){
+        y=boy-60;
+    }
+    buton.style.left=x+"px";   
     buton.style.top=y+"px";
     document.getElementById('skor').innerHTML="SCORE : "+counter;
     }                         
@@ -130,9 +156,14 @@
     let counter=0;
     buton.onclick=function(){
     counter++;
-    let x=(Math.random() * 330)+15;
-    let y=(Math.random() * 679)+25;
-    buton.style.left=x+"px";
+   let x=Math.floor(Math.random() * en);
+    let y=Math.floor(Math.random() * boy);
+    if(x>en-60){
+        x=en-60;
+    }if(y>boy-60){
+        y=boy-60;
+    }
+    buton.style.left=x+"px";   
     buton.style.top=y+"px";
     buton.style.width=this.clientWidth-5+"px";
     buton.style.height=this.clientHeight-5+"px";
