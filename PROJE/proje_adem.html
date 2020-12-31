@@ -1,205 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Project:Adem</title>
     <link rel="icon" href="https://media.discordapp.net/attachments/765484446681923584/792155779699834930/sun.png">
-     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-<style>
-    body {
-  margin: 0;
-  padding: 0;
-}
-    body {
-  height: 100vh;
-  width: 100vw;
-}
-    * {
-  box-sizing: border-box;
-}
-    div {
-  height: 100%;
-  width: 100%;
-         background-image: url(https://media.discordapp.net/attachments/765484446681923584/792150836159316009/proje.jpg?width=421&height=676);
-    padding: 10px;
-  font-size: 20px;
-}
-    #baslik{
-        font-family: cursive;
-        color: white;
-        user-select: none;
-        text-align: center;
-    
-    }
-    #buton{                        
-        border:1px;            
-        background:orange;   
-        box-shadow: 0 0 10px orange,  
-                    0 0 60px orange,
-                    0 0 200px yellow,
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #container {
+            height: 100%;
+            width: 100%;
+            background-image: url(https://media.discordapp.net/attachments/765484446681923584/792150836159316009/proje.jpg?width=421&height=676);
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        #title {
+            font-family: cursive;
+            color: darkblue;
+            user-select: none;
+            text-align: center;
+        }
+
+        #button {
+            border: 1px;
+            background: orange;
+            box-shadow: 0 0 10px orange,
+                0 0 60px orange,
+                0 0 200px yellow,
                 inset 0 0 80px yellow;
-        width:60px;           
-        height:60px;            
-        position: absolute;    
-        border-radius: 50px;    
-    }
-    .seviye{
-        color: white;  
-        background-color:#2ecc71; 
-        font-family: cursive;
-        border-radius: 10px; 
-        letter-spacing: 2px; 
-        font-weight: bold;   
-        border-top: 5px solid black;
-        border-left: 5px solid black;
-        transition: all 0.1s; 
-    }
-    
-    .seviye:hover{                    
-        background-color: #27ae60  
-    }
-    .seviye:active{ 
-        border-left: none;  
-        border-top: none;  
-    }
-    
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            border-radius: 50px;
+        }
 
-    #skor{ 
-        background:white;
-        width: 100px;    
-        height: 50px;    
-        border-radius: 10px;    
-        user-select: none; 
-        
-        
-    }
-    #tanım{       
-    color:white ;
-    font-family: cursive;
-    font-size: 20px;
-    user-select: none; 
-    }
-    
-</style>
+        .level {
+            color: white;
+            background-color:darkblue;
+            font-family: cursive;
+            border-radius: 10px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            border-top: 5px solid black;
+            border-left: 5px solid black;
+            transition: all 0.1s;
+            text-align: center;
+        }
+
+        .level:hover {
+            background-color:lightblue;
+        }
+
+        .level:active {
+            border-left: none;
+            border-top: none;
+        }
+
+        .scoreTime {
+            background-color: darkblue;
+            color: white;
+            width: 120px;
+            height: 26px;
+            border-radius: 10px;
+            user-select: none;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: middle;
+            margin-top: 10px;
+        }
+
+        #desc {
+            color: darkblue;
+            font-family: cursive;
+            font-size: 20px;
+            user-select: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body >
 
-    <div id="div" >  
-           <h1 id="baslik">BUTON YAKALAMA OYUNU</h1>       
-           <button class="seviye" type="button" id="easy">EASY</button>   
-           <button class="seviye" type="button" id="medium">MEDİUM</button>
-           <button class="seviye" type="button" id="hard">HARD</button>
-           <button class="seviye" type="button" id="reflex">REFLEX</button>
-            <p id='tanım'>Zorluk seviyeni seç ve güneşi yakala</p>
-            <button type="button" id="buton"></button>
-            <p  id="skor"></p>
-          
+<body>
+    <div id="container">
+        <h1 id="title">CATCHING THE SUN</h1>
+        <button class="level" type="button" id="restart" onclick='location.reload();'>RESTART</button>
+        <button class="level" type="button" id="easy">EASY</button>
+        <button class="level" type="button" id="medium">MEDIUM</button>
+        <button class="level" type="button" id="hard">HARD</button>
+        <button class="level" type="button" id="reflex">REFLEX</button>
+        <p id="desc">Choose a level and catch the sun</p>
+        <button type="button" id="button"></button>
+        <div class="scoreTime" id="score"></div>
+        <div class="scoreTime" id="time">Time left :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
     </div>
+
     <script>
-var divv = document.querySelector('div');
-var en = divv.offsetWidth;
-var boy = divv.offsetHeight;
-    document.querySelector('#easy').onclick=function(){ 
-    let buton=document.querySelector('#buton');        
-    buton.style.width="60px";
-    buton.style.height="60px";
-    document.getElementById('tanım').innerHTML="Sakin ol champ! Arkandan atlı kovalamıyor...";
-    let counter=0;
-    buton.onclick=function(){ 
-    counter++; 
-    let x=Math.floor(Math.random() * en);
-    let y=Math.floor(Math.random() * boy);
-    if(x>en-60){
-        x=en-60;
-    }if(y>boy-60){
-        y=boy-60;
-    }
-    buton.style.left=x+"px";   
-    buton.style.top=y+"px";
-    document.getElementById('skor').innerHTML="SCORE : "+counter; 
-    }
-    function motivation() { 
-    document.getElementById('tanım').innerHTML="Artık Medium'a geçme vaktin gelmedi mi???";
-    }
-    setTimeout(motivation, 3000);
-    }
-    document.querySelector('#medium').onclick=function(){
-    document.getElementById('tanım').innerHTML="Süren başladı çalıştır parmakları!"
-    let buton=document.querySelector('#buton');
-    buton.style.width="60px";
-    buton.style.height="60px";
-    let counter=0;         
-    buton.onclick=function(){
-    counter++;
-    let x=Math.floor(Math.random() * en);
-    let y=Math.floor(Math.random() * boy);
-    if(x>en-60){
-        x=en-60;
-    }if(y>boy-60){
-        y=boy-60;
-    }
-    buton.style.left=x+"px";   
-    buton.style.top=y+"px";
-    document.getElementById('skor').innerHTML="SCORE : "+counter;
-    }                         
-    function timeFinish() {     
-    alert('SÜRENİZ BİTTİ!SCORE: '+counter);
-    alert('TEKRAR OYNAMAK İÇİN BİR ZORLUK SEVİYESİ SEÇİN ');
-    }
-    setTimeout(timeFinish, 6000); 
-    }
-    document.querySelector('#hard').onclick=function(){
-    document.getElementById('tanım').innerHTML="Bakalım ne kadar zorlayabiliriz seni"
-    let buton=document.querySelector('#buton');
-    buton.style.width="60px";
-    buton.style.height="60px";
-    let counter=0;
-    buton.onclick=function(){
-    counter++;
-   let x=Math.floor(Math.random() * en);
-    let y=Math.floor(Math.random() * boy);
-    if(x>en-60){
-        x=en-60;
-    }if(y>boy-60){
-        y=boy-60;
-    }
-    buton.style.left=x+"px";   
-    buton.style.top=y+"px";
-    buton.style.width=this.clientWidth-5+"px";
-    buton.style.height=this.clientHeight-5+"px";
-    document.getElementById('skor').innerHTML="SCORE : "+counter;
-    }
-    function timeFinish() {
-        
-    alert('SÜRENİZ BİTTİ!SCORE: '+counter);
-    alert('TEKRAR OYNAMAK İÇİN BİR ZORLUK SEVİYESİ SEÇİN ');
-    }
-    setTimeout(timeFinish, 6000);
-    }
-    document.querySelector('#reflex').onclick=function(){
-    let buton=document.querySelector('#buton');
-    document.getElementById('tanım').innerHTML="Reflex Test";
-    buton.style.width="60px";  
-    buton.style.height="60px";  
-    buton.style.top="340px";
-    buton.style.left="170px";
-    buton.style.visibility="hidden"; 
-    let time=(Math.random() * 1000); 
-    setTimeout(reflex, time);
-    function reflex() {
-    let buton=document.querySelector('#buton'); 
-    buton.style.visibility="visible";  
-    var start = new Date();
-    buton.onclick=function(){ 
-    buton.style.visibility="hidden";
-    var finish = new Date(); 
-    console.log(finish-start);
-    document.querySelector('#skor').innerHTML=(finish-start).toString()+"ms";
-    let time=(Math.random() * 6000); 
-    setTimeout(reflex, time);  
-    }    
-    }
-    }  
+        var score=document.getElementById('score');
+        score.innerHTML="SCORE";
+        var button = document.querySelector('#button');
+        var div = document.querySelector('div');
+        var en = div.offsetWidth;
+        var boy = div.offsetHeight;
+        var counter;
+        var desc=document.getElementById('desc');
+
+        function changeMode() {
+            document.getElementById('easy').hidden = true;
+            document.getElementById('medium').hidden = true;
+            document.getElementById('hard').hidden = true;
+            document.getElementById('reflex').hidden = true;
+            button.disabled = false;
+            button.style.width = "60px";
+            button.style.height = "60px";
+        }
+
+        function displayTime() {
+            var timeleft = 16;
+            var downloadTimer = setInterval(function () {
+                timeleft--;
+                time.innerHTML = "Time left : " + timeleft;
+                if (timeleft <= 0)
+                    clearInterval(downloadTimer);
+            }, 980)
+        }
+
+        function changeLocation() {
+            counter++;
+            let x = Math.floor(Math.random() * en);
+            let y = Math.floor(Math.random() * boy);
+            if (x > en - 60) { x = en - 60; }
+            if (y > boy - 60) { y = boy - 60; }
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+
+        document.querySelector('#easy').onclick = function () {
+             desc.innerHTML="Catch the Sun!";
+            counter = 0;
+            changeMode();
+            button.onclick = function () {
+                changeLocation();
+                score.innerHTML="SCORE : " + counter;
+            }
+        }
+
+        document.querySelector('#medium').onclick = function () {
+            displayTime();
+            changeMode();
+            desc.innerHTML="The game has started. What are you waiting for?";
+            counter = 0;
+            score.innerHTML="SCORE : " + counter;
+            setTimeout(() => {
+                button.disabled = true;
+                alert("Your time is up. Your SCORE : " + counter);
+            }, 16000);
+            button.onclick = function () {
+                changeLocation();
+                score.innerHTML="SCORE : " + counter;
+            }
+        }
+
+        document.querySelector('#hard').onclick = function () {
+            displayTime();
+            changeMode();
+            counter = 0;
+            desc.innerHTML="You want to test your limits. Don't you?";
+            score.innerHTML="SCORE : " + counter;
+            setTimeout(() => {
+                button.disabled = true;
+                alert("Your time is up. SCORE : " + counter);
+            }, 16000);
+            button.onclick = function () {
+                changeLocation();
+                button.style.width = this.clientWidth - 5 + "px";
+                button.style.height = this.clientHeight - 5 + "px";
+                score.innerHTML="SCORE : " + counter;
+            }
+        }
+
+        document.querySelector('#reflex').onclick = function () {
+            desc.innerHTML="Let's test your reflexes.";
+            changeMode();
+            button.style.top = "340px";
+            button.style.left = "170px";
+            button.style.visibility = "hidden";
+            let time = (Math.random() * 1000);
+            setTimeout(reflex, time);
+            function reflex() {
+                button.style.visibility = "visible";
+                var start = new Date();
+                button.onclick = function () {
+                    button.style.visibility = "hidden";
+                    var finish = new Date();
+                    console.log(finish - start);
+                    score.innerHTML= (finish - start).toString() + "ms";
+                    let time = (Math.random() * 6000);
+                    setTimeout(reflex, time);
+                }
+            }
+        }  
     </script>
 </body>
+
 </html>
