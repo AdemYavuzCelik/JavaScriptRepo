@@ -109,6 +109,7 @@
     </div>
 
     <script>
+        document.getElementById("time").hidden=true;
         var score=document.getElementById('score');
         score.innerHTML="SCORE";
         var button = document.querySelector('#button');
@@ -159,6 +160,7 @@
         }
 
         document.querySelector('#medium').onclick = function () {
+            document.getElementById("time").hidden=false;
             displayTime();
             changeMode();
             desc.innerHTML="The game has started. What are you waiting for?";
@@ -175,6 +177,7 @@
         }
 
         document.querySelector('#hard').onclick = function () {
+            document.getElementById("time").hidden=false;
             displayTime();
             changeMode();
             counter = 0;
